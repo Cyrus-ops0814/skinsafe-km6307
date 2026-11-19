@@ -197,26 +197,31 @@ RETURN p.label AS Product, collect(DISTINCT c.label + ' (' + i.label + ')') AS C
 //     what goes with it, using the same class-level rules:
 //       REQUIRES        -> a sunscreen with SPF 30+
 //       COMPATIBLE_WITH -> a supporting product (e.g. ceramide moisturiser)
-//     Only needs the routine does not cover yet; every suggestion passes the
-//     same safety filters as Q1 (no conflict, no over-layering, skin type).
+//     Only needs the routine does not cover yet (a sunscreen counts only in the
+//     morning). Every suggestion is checked against the added product AND the
+//     rest of the routine in the slots where it will be used (sunscreen: AM;
+//     supporting product: AM and PM): no Medium/High conflict, no over-layering,
+//     nothing the user's skin type should be cautious with.
 //     Gender only ranks (own segment or unisex first), it never excludes.
 //   :param {user: 'demo_men', add: 'W04'}   (Target Pro Granactive Retinoid 1%, a Watsons own brand)
 // ---------------------------------------------------------------------
 MATCH (u:User {id: $user}), (add:Product {id: $add})
 MATCH (add)-[:CONTAINS]->(:Ingredient)-[:IS_A]->(:IngredientClass)-[:SUBCLASS_OF*0..5]->(c:IngredientClass)-[rel:REQUIRES|COMPATIBLE_WITH]->(need:IngredientClass)
 WITH DISTINCT u, add, c, rel, need
-WHERE NOT (need)-[:SUBCLASS_OF*0..5]->(:IngredientClass {label: 'Active ingredient'})
-AND NOT EXISTS {             // the routine already covers this need
-  MATCH (u)-[:USES]->(have:Product)-[:CONTAINS]->(:Ingredient)-[:IS_A]->(:IngredientClass)-[:SUBCLASS_OF*0..5]->(need)
-  WHERE have <> add AND (type(rel) = 'COMPATIBLE_WITH' OR have.spf >= 30)
+WHERE NOT (need)-[:SUBCLASS_OF*0..5]->(:IngredientClass {label: 'Active ingredient'})   // supporting products only
+AND NOT EXISTS {             // the routine already covers this need (a sunscreen only in the morning)
+  MATCH (u)-[x:USES]->(have:Product)-[:CONTAINS]->(:Ingredient)-[:IS_A]->(:IngredientClass)-[:SUBCLASS_OF*0..5]->(need)
+  WHERE have <> add AND (type(rel) = 'COMPATIBLE_WITH' OR (have.spf >= 30 AND x.slot = 'AM'))
 }
+// where the companion will be used: a sunscreen in the morning, a supporting product in either slot
+WITH u, add, c, rel, need, CASE type(rel) WHEN 'REQUIRES' THEN ['AM'] ELSE ['AM', 'PM'] END AS slots
 MATCH (alt:Product)-[:CONTAINS]->(:Ingredient)-[:IS_A]->(:IngredientClass)-[:SUBCLASS_OF*0..5]->(need)
 WHERE alt <> add AND NOT (u)-[:USES]->(alt)
   AND (type(rel) = 'COMPATIBLE_WITH' OR alt.spf >= 30)
   AND alt.type <> add.type
   AND (type(rel) = 'REQUIRES' OR alt.type <> 'Sunscreen')
-WITH DISTINCT u, add, c, rel, need, alt
-WHERE NOT EXISTS {
+WITH DISTINCT u, add, c, rel, need, slots, alt
+WHERE NOT EXISTS {           // nothing the user's skin type should be cautious with
   MATCH (u)-[:HAS_SKIN_TYPE]->(s:SkinType)
   MATCH (alt)-[:CONTAINS]->(:Ingredient)-[:IS_A]->(:IngredientClass)-[:SUBCLASS_OF*0..5]->(:IngredientClass)-[:CAUTION_FOR]->(s)
 }
@@ -228,6 +233,19 @@ AND NOT EXISTS {             // only Medium/High conflicts block a suggestion
 AND NOT EXISTS {
   MATCH (alt)-[:CONTAINS]->(:Ingredient)-[:IS_A]->(:IngredientClass)-[:SUBCLASS_OF*0..5]->(a:IngredientClass {no_stack: true})
   MATCH (add)-[:CONTAINS]->(:Ingredient)-[:IS_A]->(:IngredientClass)-[:SUBCLASS_OF*0..5]->(a)
+}
+AND NOT EXISTS {             // the same checks against the rest of the routine in those slots
+  MATCH (u)-[x:USES]->(o:Product) WHERE x.slot IN slots AND o <> add
+  MATCH (alt)-[:CONTAINS]->(:Ingredient)-[:IS_A]->(:IngredientClass)-[:SUBCLASS_OF*0..5]->(a:IngredientClass)
+  MATCH (a)-[k:CONFLICTS_WITH]-(b:IngredientClass)
+  MATCH (o)-[:CONTAINS]->(:Ingredient)-[:IS_A]->(:IngredientClass)-[:SUBCLASS_OF*0..5]->(b)
+  WHERE k.severity_rank >= 3 OR (k.severity_rank = 2 AND o.application = 'leave_on' AND alt.application = 'leave_on')
+}
+AND NOT EXISTS {
+  MATCH (u)-[x:USES]->(o:Product)
+  WHERE x.slot IN slots AND o <> add AND o.application = 'leave_on' AND alt.application = 'leave_on'
+  MATCH (alt)-[:CONTAINS]->(:Ingredient)-[:IS_A]->(:IngredientClass)-[:SUBCLASS_OF*0..5]->(a:IngredientClass {no_stack: true})
+  MATCH (o)-[:CONTAINS]->(:Ingredient)-[:IS_A]->(:IngredientClass)-[:SUBCLASS_OF*0..5]->(a)
 }
 // promoted items may be ranked first HERE, after every safety filter;
 // products for the user's segment or unisex come first, others stay eligible

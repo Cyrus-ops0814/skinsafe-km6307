@@ -9,7 +9,7 @@ A Neo4j knowledge graph that checks skincare routines for ingredient conflicts a
 | `import.cypher` | Import with `LOAD CSV` (local Neo4j; put the CSV files in the database's import folder) |
 | `import_aura.cypher` | Same import with the rows written inline (`UNWIND`), for AuraDB, which cannot read local files |
 | `queries.cypher` | Q0–Q4 and V1–V3 exactly as in Appendix C of the report |
-| `tests.cypher` | Extra test queries F14–F18 from Appendix F |
+| `tests.cypher` | Extra test queries F14–F20 from Appendix F (F18–F20 create temporary test data and delete it afterwards) |
 
 ## How to reproduce
 1. Run `import_aura.cypher` (AuraDB) or `import.cypher` (local). Expected result: 189 nodes, 486 relationships.
