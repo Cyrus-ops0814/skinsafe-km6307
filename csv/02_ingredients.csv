@@ -1,0 +1,61 @@
+ingredient_id,label,label_zh,class_id,aliases
+retinol,Retinol,视黄醇,Retinol_family,Vitamin A
+retinal,Retinal,视黄醛,Retinol_family,Retinaldehyde
+retinyl_palmitate,Retinyl Palmitate,视黄醇棕榈酸酯,Retinol_family,
+hpr,Hydroxypinacolone Retinoate,羟基频哪酮视黄酸酯,Retinol_family,HPR|Granactive Retinoid
+tretinoin,Tretinoin,维A酸,Retinoic_acid,Retinoic Acid|Retin-A
+adapalene,Adapalene,阿达帕林,Synthetic_retinoid,Differin
+glycolic_acid,Glycolic Acid,甘醇酸,AHA,
+lactic_acid,Lactic Acid,乳酸,AHA,
+mandelic_acid,Mandelic Acid,杏仁酸,AHA,
+salicylic_acid,Salicylic Acid,水杨酸,BHA,BHA
+gluconolactone,Gluconolactone,葡糖酸内酯,PHA,PHA
+lactobionic_acid,Lactobionic Acid,乳糖酸,PHA,
+ascorbic_acid,Ascorbic Acid,抗坏血酸（左旋维C）,L_ascorbic_acid,L-Ascorbic Acid|Vitamin C|LAA
+sodium_ascorbyl_phosphate,Sodium Ascorbyl Phosphate,抗坏血酸磷酸酯钠,Vitamin_C_derivative,SAP
+ascorbyl_glucoside,Ascorbyl Glucoside,抗坏血酸葡糖苷,Vitamin_C_derivative,AA2G
+ethyl_ascorbic_acid,3-O-Ethyl Ascorbic Acid,3-O-乙基抗坏血酸,Vitamin_C_derivative,Ethyl Ascorbic Acid
+tetrahexyldecyl_ascorbate,Tetrahexyldecyl Ascorbate,四己基癸醇抗坏血酸酯,Vitamin_C_derivative,THD Ascorbate
+benzoyl_peroxide,Benzoyl Peroxide,过氧化苯甲酰,Benzoyl_peroxide,BPO
+niacinamide,Niacinamide,烟酰胺,Niacinamide,Nicotinamide|Vitamin B3
+azelaic_acid,Azelaic Acid,壬二酸,Azelaic_acid,
+copper_tripeptide_1,Copper Tripeptide-1,三肽-1铜,Peptide,GHK-Cu|Copper Peptide
+palmitoyl_pentapeptide_4,Palmitoyl Pentapeptide-4,棕榈酰五肽-4,Peptide,Matrixyl
+sodium_hyaluronate,Sodium Hyaluronate,透明质酸钠,Hydrating_agent,Hyaluronic Acid|Hydrolyzed Hyaluronic Acid|Sodium Acetylated Hyaluronate
+glycerin,Glycerin,甘油,Hydrating_agent,Glycerol
+ceramide_np,Ceramide NP,神经酰胺 NP,Barrier_lipid,Ceramide 3
+panthenol,Panthenol,泛醇,Soothing_agent,Vitamin B5|Pro-Vitamin B5
+centella_extract,Centella Asiatica Extract,积雪草提取物,Soothing_agent,Cica|Centella Asiatica Leaf Extract
+allantoin,Allantoin,尿囊素,Soothing_agent,
+zinc_oxide,Zinc Oxide,氧化锌,Mineral_UV_filter,
+titanium_dioxide,Titanium Dioxide,二氧化钛,Mineral_UV_filter,
+octinoxate,Ethylhexyl Methoxycinnamate,甲氧基肉桂酸乙基己酯,Chemical_UV_filter,Octinoxate
+bemotrizinol,Bis-Ethylhexyloxyphenol Methoxyphenyl Triazine,双-乙基己氧苯酚甲氧苯基三嗪,Chemical_UV_filter,Tinosorb S|Bemotrizinol
+parfum,Parfum,香精,Fragrance,Fragrance|Aroma
+alcohol_denat,Alcohol Denat.,变性乙醇,Drying_alcohol,SD Alcohol|Ethanol
+menthol,Menthol,薄荷醇,Menthol_cooling,
+retinyl_propionate,Retinyl Propionate,视黄醇丙酸酯,Retinol_family,
+bakuchiol,Bakuchiol,补骨脂酚,Retinol_alternative,
+capryloyl_salicylic_acid,Capryloyl Salicylic Acid,辛酰水杨酸,BHA,LHA
+potassium_azeloyl_diglycinate,Potassium Azeloyl Diglycinate,壬二酰二甘氨酸钾,Azelaic_acid,Azeloglicina
+ascorbyl_palmitate,Ascorbyl Palmitate,抗坏血酸棕榈酸酯,Vitamin_C_derivative,
+palmitoyl_tripeptide_1,Palmitoyl Tripeptide-1,棕榈酰三肽-1,Peptide,
+palmitoyl_tetrapeptide_7,Palmitoyl Tetrapeptide-7,棕榈酰四肽-7,Peptide,
+ceramide_ap,Ceramide AP,神经酰胺 AP,Barrier_lipid,Ceramide 6 II
+ceramide_eop,Ceramide EOP,神经酰胺 EOP,Barrier_lipid,Ceramide 1
+ceramide_ns,Ceramide NS,神经酰胺 NS,Barrier_lipid,Ceramide 2
+ceramide_as,Ceramide AS,神经酰胺 AS,Barrier_lipid,Ceramide 5
+pseudo_ceramide,Hydroxypropyl Bispalmitamide MEA,羟丙基双棕榈酰胺 MEA（类神经酰胺）,Barrier_lipid,Pseudo-ceramide
+madecassoside,Madecassoside,羟基积雪草苷,Soothing_agent,Centella derivative
+ethylhexyl_triazone,Ethylhexyl Triazone,乙基己基三嗪酮,Chemical_UV_filter,Uvinul T 150
+dhhb,Diethylamino Hydroxybenzoyl Hexyl Benzoate,二乙氨羟苯甲酰基苯甲酸己酯,Chemical_UV_filter,Uvinul A Plus|DHHB
+octocrylene,Octocrylene,奥克立林,Chemical_UV_filter,
+ethylhexyl_salicylate,Ethylhexyl Salicylate,水杨酸乙基己酯,Chemical_UV_filter,"Octisalate (a UV filter, NOT salicylic acid)"
+homosalate,Homosalate,胡莫柳酯,Chemical_UV_filter,
+bisoctrizole,Methylene Bis-Benzotriazolyl Tetramethylbutylphenol,亚甲基双-苯并三唑基四甲基丁基酚,Chemical_UV_filter,Tinosorb M|Bisoctrizole
+alcohol,Alcohol,乙醇,Drying_alcohol,Ethanol
+linalool,Linalool,芳樟醇,Fragrance,Fragrance allergen
+limonene,Limonene,柠檬烯,Fragrance,Fragrance allergen
+menthyl_lactate,Menthyl Lactate,乳酸薄荷酯,Menthol_cooling,
+menthoxypropanediol,Menthoxypropanediol,薄荷氧基丙二醇,Menthol_cooling,Cooling agent
+peppermint_extract,Mentha Piperita (Peppermint) Leaf Extract,薄荷叶提取物,Menthol_cooling,Peppermint
