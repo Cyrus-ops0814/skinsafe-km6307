@@ -1,0 +1,4 @@
+user_id,label,gender,skin_type_id,concern_ids
+demo_oily,"Demo user A (woman, oily, acne-prone)",Women,oily,acne|hyperpigmentation
+demo_sensitive,"Demo user B (woman, sensitive, redness)",Women,sensitive,redness|signs_of_aging
+demo_men,"Demo user C (man, oily, shaves daily)",Men,oily,oiliness|acne
