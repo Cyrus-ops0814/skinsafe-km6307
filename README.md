@@ -8,7 +8,7 @@ A Neo4j knowledge graph that checks skincare routines for ingredient conflicts a
 | `csv/` | The 12 CSV files: ingredient classes, ingredients, concerns, skin types, 48 products, users, product–ingredient links, rules and routines |
 | `import.cypher` | Import with `LOAD CSV` (local Neo4j; put the CSV files in the database's import folder) |
 | `import_aura.cypher` | Same import with the rows written inline (`UNWIND`), for AuraDB, which cannot read local files |
-| `queries.cypher` | Q0–Q4 and V1–V3 exactly as in Appendix C of the report |
+| `queries.cypher` | Q0–Q4 and V1–V3 (Appendix C of the report) and the future-extension sketches H1–H2 (Appendix H) |
 | `tests.cypher` | Extra test queries F14–F20 from Appendix F (F18–F20 create temporary test data and delete it afterwards) |
 
 ## How to reproduce
